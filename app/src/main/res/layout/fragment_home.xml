@@ -1,0 +1,44 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    tools:context=".Fragments.HomeFragment">
+
+
+    <TextView
+        android:id="@+id/displaytoken"
+        android:layout_width="match_parent"
+        android:layout_height="169dp"
+        android:layout_marginTop="150dp"
+        android:fontFamily="sans-serif"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/token"
+        android:layout_width="85dp"
+        android:layout_height="32dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="120dp"
+        android:text="JwtToken"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="36dp"
+        android:text="TextView"
+        android:textAlignment="textStart"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+</FrameLayout>
+</ScrollView>
