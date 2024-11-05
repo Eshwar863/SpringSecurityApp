@@ -83,7 +83,7 @@ public class SplashScreen extends AppCompatActivity {
         });
 
     }
-    // Method to show a dialog box to retry the request
+
     private void showRetryDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(SplashScreen.this);
         builder.setTitle("Request Failed");
@@ -94,7 +94,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 progressbarsplashscreen.setVisibility(View.VISIBLE);
-                alive(); // Retry the request when "Retry" is clicked
+                alive();
             }
         });
 

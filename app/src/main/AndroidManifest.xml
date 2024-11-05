@@ -15,6 +15,12 @@
         android:theme="@style/Theme.SpringSecurity"
         tools:targetApi="31">
         <activity
+            android:name=".userdetails"
+            android:exported="false" />
+        <activity
+            android:name=".UserDetails"
+            android:exported="false" />
+        <activity
             android:name=".UserRegistration"
             android:exported="false"
             android:theme="@style/Theme.SpringSecurity" />
