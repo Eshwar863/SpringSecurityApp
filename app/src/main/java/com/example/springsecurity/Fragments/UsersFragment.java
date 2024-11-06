@@ -48,7 +48,7 @@ public class UsersFragment extends Fragment {
 
         Gson gson = new GsonBuilder().setLenient().create();
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://springsecurity-tbu2.onrender.com/")
+                .baseUrl("https://finalssecurity1-v1-0.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         apiService = retrofit.create(ApiService.class);
@@ -67,8 +67,11 @@ public class UsersFragment extends Fragment {
 
                 intent.putExtra("userId", selectedUser.getId());
                 intent.putExtra("userName", selectedUser.getUserName());
+                intent.putExtra("email", selectedUser.getEmail());
 
                 startActivity(intent);
+                Toast.makeText(getContext(), selectedUser.getEmail(), Toast.LENGTH_SHORT).show();
+
             }
         });
 

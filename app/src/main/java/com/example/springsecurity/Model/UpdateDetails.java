@@ -1,29 +1,18 @@
 package com.example.springsecurity.Model;
 
-public class Users {
+public class UpdateDetails {
 
-    private Integer id;
     private String userName;
     private String email;
-    private String profilepic;
     private String DOB;
     private String gender;
 
-    public Users(Integer id, String userName, String email, String profilepic, String DOB, String gender) {
-        this.id = id;
+    public UpdateDetails(String userName, String email, String DOB, String gender) {
         this.userName = userName;
         this.email = email;
-        this.profilepic = profilepic;
+
         this.DOB = DOB;
         this.gender = gender;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getUserName() {
@@ -42,13 +31,6 @@ public class Users {
         this.email = email;
     }
 
-    public String getProfilepic() {
-        return profilepic;
-    }
-
-    public void setProfilepic(String profilepic) {
-        this.profilepic = profilepic;
-    }
 
     public String getDOB() {
         return DOB;
@@ -65,5 +47,4 @@ public class Users {
     public void setGender(String gender) {
         this.gender = gender;
     }
-
 }

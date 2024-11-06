@@ -31,7 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserRegistration extends AppCompatActivity {
     private ApiService apiService;
-    EditText usernametf,passwordtf;
+    EditText usernametf,passwordtf ,emailtf;
     Button buttonRegister,backtologin;
     private ProgressBar progressBar;
     @Override
@@ -45,7 +45,7 @@ public class UserRegistration extends AppCompatActivity {
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://springsecurity-tbu2.onrender.com/")
+                .baseUrl("https://finalssecurity1-v1-0.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         progressBar = findViewById(R.id.progressbarregistration);
@@ -54,6 +54,7 @@ public class UserRegistration extends AppCompatActivity {
         buttonRegister = findViewById(R.id.buttonRegister);
         usernametf = findViewById(R.id.editTextuserNameregister);
         passwordtf = findViewById(R.id.editTextPasswordregister);
+        emailtf = findViewById(R.id.editTextEmailregister);
         backtologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,19 +70,20 @@ public class UserRegistration extends AppCompatActivity {
             public void onClick(View v) {
                 String username = usernametf.getText().toString().trim();
                 String password = passwordtf.getText().toString().trim();
+                String email = emailtf.getText().toString().trim();
                 if(username.isEmpty()||password.isEmpty()){
                     Toast.makeText(UserRegistration.this,"Enter UserName and Password",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     progressBar.setVisibility(View.VISIBLE);
-                    userregistration(username,password);
+                    userregistration(username,email,password);
                 }
             }
         });
     }
 
-    private void userregistration(String username,String password){
-        UserRegister userRegister = new UserRegister(username,password);
+    private void userregistration(String username,String email,String password){
+        UserRegister userRegister = new UserRegister(username,password,email);
         Call<RegisterResponce> call = apiService.register(userRegister);
 
         call.enqueue(new Callback<RegisterResponce>() {

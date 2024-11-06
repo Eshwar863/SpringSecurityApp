@@ -8,6 +8,13 @@
     <string name="Password">password</string>
     <string name="Login">Login</string>
     <string name="Logout">Logout</string>
+    <string name="enter_passwords">Please enter both password fields</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="token_unavailable">Token is unavailable. Please log in again</string>
+    <string name="update_failed">Failed to update password</string>
+    <string name="unable_to_process">Unable to process the request</string>
+    <string name="request_timeout">Request timeout, please try again</string>
+     <string name="TC">Terms &amp; Conditions</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -135,4 +142,11 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string-array name="gender_options">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
 </resources>
