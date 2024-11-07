@@ -1,12 +1,10 @@
 package com.example.springsecurity;
 
-import static java.security.AccessController.getContext;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,6 +30,7 @@ public class Password extends AppCompatActivity {
     private ApiService apiService;
     private Gson gson;
     private Retrofit retrofit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,77 +51,71 @@ public class Password extends AppCompatActivity {
         EditText reenterPasswordEditText = findViewById(R.id.reenter_password);
         Button submitButton = findViewById(R.id.submit_button);
 
-
         TextView passwordLabel = findViewById(R.id.password_label);
         TextView reenterPasswordLabel = findViewById(R.id.reenter_password_label);
-
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String password = passwordEditText.getText().toString();
                 String reenteredPassword = reenterPasswordEditText.getText().toString();
 
+                Log.d("PasswordActivity", "Password entered: " + password);  // Log entered password
+                Log.d("PasswordActivity", "Re-entered password: " + reenteredPassword);  // Log re-entered password
 
                 if (password.equals(reenteredPassword)) {
-                    forgotpass(password,reenteredPassword);
+                    Log.d("PasswordActivity", "Passwords match, calling forgotpass method.");
+                    forgotpass(password, reenteredPassword);
                 } else {
+                    Log.e("PasswordActivity", "Passwords don't match.");
                     Toast.makeText(Password.this, "Password Doesn't Match", Toast.LENGTH_SHORT).show();
-
                 }
             }
         });
-
     }
-
-
-
-
-
 
     private String getTokenFromSharedPreferences() {
         SharedPreferences sharedPreferences = getSharedPreferences("Login", Context.MODE_PRIVATE);
-        return sharedPreferences.getString("jwttoken", null);
+        String token = sharedPreferences.getString("jwttoken", null);
+        Log.d("PasswordActivity", "Token retrieved from SharedPreferences: " + token);  // Log the token
+        return token;
     }
-
 
     private void forgotpass(String password, String reenterPassword) {
         String token = getTokenFromSharedPreferences();
 
         if (token == null || token.isEmpty()) {
-
+            Log.e("PasswordActivity", "Token is unavailable.");
             Toast.makeText(Password.this, "Token is unavailable", Toast.LENGTH_SHORT).show();
             return;
         }
 
         ForgotPassword forgotPassword = new ForgotPassword(password, reenterPassword);
 
+        Log.d("PasswordActivity", "Calling API with token: " + token);  // Log the token used for API call
+
         Call<ApiResponse> call = apiService.forgotpassword("Bearer " + token, forgotPassword);
 
         call.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                if (response.isSuccessful()&&response.body() !=null) {
+                Log.d("PasswordActivity", "API response received: " + response.code());  // Log the response code
 
-                    if (response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
+                    ApiResponse apiResponse = response.body();
+                    Log.d("PasswordActivity", "Password updated successfully, API message: " + apiResponse.getMessage());
 
-                        ApiResponse apiResponse = response.body();
-                        //Toast.makeText(Password.this, "Password updated successfully!", Toast.LENGTH_SHORT).show();
-                        SharedPreferences preferences = getSharedPreferences("Login",MODE_PRIVATE);
-                        SharedPreferences.Editor editor =preferences.edit();
-                        editor.clear();
-                        editor.apply();
-                        Toast.makeText(Password.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
-
-//                        Intent intent =  new Intent(Password.this, LoginActivity.class);
-//                        startActivity(intent);
-//                        finish();
-                    } else {
-                        Toast.makeText(Password.this, "Empty response from the server", Toast.LENGTH_SHORT).show();
-                    }
+                    // Clear the shared preferences (if needed)
+                    SharedPreferences preferences = getSharedPreferences("Login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.clear();
+                    editor.apply();
+                    Toast.makeText(Password.this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Password.this,LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
-
+                    Log.e("PasswordActivity", "Failed to update password, response code: " + response.code());
                     if (response.code() == 400) {
                         Toast.makeText(Password.this, "Bad request: Failed to update password", Toast.LENGTH_SHORT).show();
                     } else if (response.code() == 504) {
@@ -135,15 +128,9 @@ public class Password extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-
+                Log.e("PasswordActivity", "Request failed: " + t.getMessage());  // Log the failure
                 Toast.makeText(Password.this, "Request timeout or network failure", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
-
-
-
-
 }
