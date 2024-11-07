@@ -5,7 +5,6 @@ import com.example.springsecurity.Model.EmailVerificationResponse;
 import com.example.springsecurity.Model.ForgotPassword;
 import com.example.springsecurity.Model.LoginRequest;
 import com.example.springsecurity.Model.RegisterResponce;
-import com.example.springsecurity.Model.UpdateDetails;
 import com.example.springsecurity.Model.UserRegister;
 import com.example.springsecurity.Model.Users;
 
