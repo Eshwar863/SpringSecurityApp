@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,10 @@ public class Settings extends Fragment {
         public Settings() {
             // Required empty public constructor
         }
-
+    public void onAboutClick(View view) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Eshwar863/SpringSecurityApp"));
+        startActivity(intent);
+    }
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
