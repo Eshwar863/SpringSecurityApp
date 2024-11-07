@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class LoginActivity extends AppCompatActivity {
     private EditText editUsername;
     private EditText editpass;
-    private Button RegisterBT;
+    private Button RegisterBT, forgotpasswordbt;
     private Button LoginBT;
     private Button button;
     private ApiService apiService;
@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         editUsername = findViewById(R.id.editTextuserNameLogin);
         editpass = findViewById(R.id.editTextPasswordlogin);
         RegisterBT =  findViewById(R.id.buttonRegisterLogin);
+        forgotpasswordbt =  findViewById(R.id.buttonForgotPassword);
         LoginBT =  findViewById(R.id.buttonLogin);
         progressBar = findViewById(R.id.progressBar);
         Gson gson = new GsonBuilder()
@@ -75,7 +76,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        forgotpasswordbt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ForgotpasswordPage = new Intent(LoginActivity.this ,ForgotPasswordActivity.class);
+                startActivity(ForgotpasswordPage);
+            }
+        });
         RegisterBT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

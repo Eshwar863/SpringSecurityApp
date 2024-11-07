@@ -14,7 +14,7 @@
     <string name="update_failed">Failed to update password</string>
     <string name="unable_to_process">Unable to process the request</string>
     <string name="request_timeout">Request timeout, please try again</string>
-     <string name="TC">Terms &amp; Conditions</string>
+    <string name="TC">Terms &amp; Conditions</string>
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
@@ -149,4 +149,5 @@
         <item>Female</item>
         <item>Others</item>
     </string-array>
+    <string name="previous">Previous</string>
 </resources>

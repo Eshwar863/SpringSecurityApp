@@ -1,6 +1,7 @@
 package com.example.springsecurity.API;
 
 import com.example.springsecurity.Model.ApiResponse;
+import com.example.springsecurity.Model.EmailVerificationResponse;
 import com.example.springsecurity.Model.ForgotPassword;
 import com.example.springsecurity.Model.LoginRequest;
 import com.example.springsecurity.Model.RegisterResponce;
@@ -35,4 +36,9 @@ public interface ApiService {
     Call<ApiResponse> forgotpassword(@Header("Authorization") String token, @Body ForgotPassword forgotPassword);
     @PUT("api/updateuserdetails")
     Call<Users> update(@Header("Authorization") String token, @Body Users users);
+    @POST("api/mail/valid/{otp}/{username}")
+    Call<EmailVerificationResponse> valid(@Path("otp")String otp, @Path("username") String userName);
+    @POST("api/mail/verifymail/{email}")
+    Call<EmailVerificationResponse> verifyEmail(@Path ("email") String email);
+
 }

@@ -7,8 +7,8 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -21,8 +21,9 @@
         android:theme="@style/Theme.SpringSecurity"
         tools:targetApi="31">
         <activity
-            android:name=".UpdateUserprofile"
+            android:name=".Password"
             android:exported="false" />
+        <activity android:name=".ForgotPasswordActivity" />
         <activity
             android:name=".AccountDetails"
             android:exported="false" />
