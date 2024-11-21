@@ -150,4 +150,13 @@
         <item>Others</item>
     </string-array>
     <string name="previous">Previous</string>
+    <string name="profile_image">Profile Image</string>
+    <string name="username">UserName</string>
+    <string name="user_example_com">user@example.com</string>
+    <string name="change_password">Change Password</string>
+    <string name="notifications">Notifications</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="theme">Theme</string>
+    <string name="log_out">Log Out</string>
+    <string name="about">About</string>
 </resources>
