@@ -39,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
                 .create();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("https://finalssecurity1-v1-0.onrender.com/")
+                .baseUrl("https://springsecurity-latest-om3m.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         apiService = retrofit.create(ApiService.class);
